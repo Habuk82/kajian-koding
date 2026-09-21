@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kajian Santren Koding — Kelas Gratis Setiap Hari di Semarang</title>
-  <meta name="description" content="Kajian Santren Koding: Kelas Belajar Gratis Setiap Hari di RUKO AD Meteseh Tembalang Semarang. Pukul 18.30 - Selesai (Break Sholat Isya'). Canva, AI Guru, Vibe Coding, Bisnis, Bahasa Arab, Proxmox & Tahsin." />
+  <meta name="description" content="Kajian Santren Koding: Kelas Belajar Gratis Setiap Hari di Programmer Kecil Meteseh Tembalang Semarang. Pukul 18.30 - Selesai (Break Sholat Isya'). Canva, AI Guru, Vibe Coding, Bisnis, Bahasa Arab, Proxmox & Tahsin." />
   
   <!-- Font Poppins Asli Santren Koding -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,467 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --primary: #16a34a; /* HSL(142, 70%, 40%) */
+      --primary-hover: #15803d;
+      --primary-light: #dcfce7;
+      --primary-border: #bbf7d0;
+      --primary-glow: rgba(22, 163, 74, 0.15);
+      
+      --dark: #0f172a;
+      --dark-surface: #1e293b;
+      --muted: #64748b;
+      --light-bg: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAVBAR PERSIS SANTRENKODING.ORG ─── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 14px 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--dark);
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
+    }
+
+    .brand-text h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary);
+    }
+
+    /* ─── HERO HEADER ─── */
+    .hero {
+      background: radial-gradient(circle at 50% -20%, #f0fdf4 0%, #ffffff 70%);
+      padding: 70px 24px 50px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: #15803d;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      border: 1px solid var(--primary-border);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -1px;
+      line-height: 1.2;
+      max-width: 880px;
+      margin: 0 auto 16px;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 28px;
+      font-weight: 400;
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .meta-item i {
+      font-size: 1rem;
+    }
+
+    /* ─── CONTAINER & SECTION HEADINGS ─── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 24px 80px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h3 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    /* ─── EVENT CARDS GRID (7 HARI LENGKAP) ─── */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #86efac;
+    }
+
+    .day-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .day-pill.active-day {
+      background: var(--primary-light);
+      color: #15803d;
+      border-color: #86efac;
+    }
+
+    .event-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .event-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .event-meta-list {
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .event-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .event-meta-item i {
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .event-btn {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: all 0.2s;
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.25);
+    }
+
+    .event-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+      color: white;
+    }
+
+    /* ─── LOKASI & FASILITAS PROGRAMMER KECIL ─── */
+    .facility-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: var(--radius-xl);
+      color: white;
+      padding: 44px 40px;
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 36px;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .facility-content h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .facility-content p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .facility-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    .feature-item i {
+      color: #4ade80;
+      font-size: 1.1rem;
+    }
+
+    .facility-cta {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+    }
+
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .facility-cta h4 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .facility-cta p {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-maps {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #2563eb;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .btn-maps:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 34px 24px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .facility-card {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+      .facility-features {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .meta-bar {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -50,7 +510,7 @@
     <div class="meta-bar">
       <div class="meta-item"><i class="bi bi-calendar3 text-success"></i> Setiap Hari (Senin – Ahad)</div>
       <div class="meta-item"><i class="bi bi-clock-fill text-success"></i> 18.30 – Selesai (Break Sholat Isya')</div>
-      <div class="meta-item"><i class="bi bi-geo-alt-fill text-danger"></i> RUKO AD Tembalang Semarang</div>
+      <div class="meta-item"><i class="bi bi-geo-alt-fill text-danger"></i> Programmer Kecil</div>
     </div>
   </header>
 
@@ -74,7 +534,7 @@
           <div class="event-meta-list">
             <div class="event-meta-item"><i class="bi bi-person-fill"></i> <strong>Mentor:</strong> Alvi</div>
             <div class="event-meta-item"><i class="bi bi-clock"></i> <strong>Waktu:</strong> 18.30 – Selesai (Break Sholat Isya')</div>
-            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil (RUKO AD)</div>
+            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil</div>
           </div>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdI5QCJgBLq-h9CW-yG-uxTDPKb7THYHVByi8BvjOiTyJZlqA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="event-btn">
@@ -93,7 +553,7 @@
           <div class="event-meta-list">
             <div class="event-meta-item"><i class="bi bi-person-fill"></i> <strong>Mentor:</strong> Khodhir</div>
             <div class="event-meta-item"><i class="bi bi-clock"></i> <strong>Waktu:</strong> 18.30 – Selesai (Break Sholat Isya')</div>
-            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil (RUKO AD)</div>
+            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil</div>
           </div>
         </div>
         <a href="https://forms.gle/Fjx7GHnQVW2nk2i78" target="_blank" rel="noopener noreferrer" class="event-btn">
@@ -112,7 +572,7 @@
           <div class="event-meta-list">
             <div class="event-meta-item"><i class="bi bi-person-fill"></i> <strong>Mentor:</strong> Habib</div>
             <div class="event-meta-item"><i class="bi bi-clock"></i> <strong>Waktu:</strong> 18.30 – Selesai (Break Sholat Isya')</div>
-            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil (RUKO AD)</div>
+            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil</div>
           </div>
         </div>
         <a href="https://forms.gle/cgkJdy3h4XKQyKeaA" target="_blank" rel="noopener noreferrer" class="event-btn">
@@ -131,7 +591,7 @@
           <div class="event-meta-list">
             <div class="event-meta-item"><i class="bi bi-person-fill"></i> <strong>Mentor:</strong> Azzam</div>
             <div class="event-meta-item"><i class="bi bi-clock"></i> <strong>Waktu:</strong> 18.30 – Selesai (Break Sholat Isya')</div>
-            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil (RUKO AD)</div>
+            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil</div>
           </div>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBsaVJ2Qe7QFBNt06XKkLiFC2gcD9A4tfyIzlblB2ZfKgKgw/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="event-btn">
@@ -150,7 +610,7 @@
           <div class="event-meta-list">
             <div class="event-meta-item"><i class="bi bi-person-fill"></i> <strong>Mentor:</strong> Abrisam</div>
             <div class="event-meta-item"><i class="bi bi-clock"></i> <strong>Waktu:</strong> 18.30 – Selesai (Break Sholat Isya')</div>
-            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil (RUKO AD)</div>
+            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil</div>
           </div>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSd83Ak_dqokNdcuk3Ag6MJIkqYQcC-m55Jf4xDQjETH82F4eQ/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="event-btn">
@@ -169,7 +629,7 @@
           <div class="event-meta-list">
             <div class="event-meta-item"><i class="bi bi-person-fill"></i> <strong>Mentor:</strong> Dzikry</div>
             <div class="event-meta-item"><i class="bi bi-clock"></i> <strong>Waktu:</strong> 18.30 – Selesai (Break Sholat Isya')</div>
-            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil (RUKO AD)</div>
+            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil</div>
           </div>
         </div>
         <a href="https://forms.gle/nSofRqYUCDqfcqt29" target="_blank" rel="noopener noreferrer" class="event-btn">
@@ -177,28 +637,8 @@
         </a>
       </div>
 
-      <!-- 7. AHAD -->
-      <div class="event-card">
-        <div class="event-top">
-          <span class="day-pill active-day"><i class="bi bi-calendar-event"></i> Setiap Ahad</span>
-          <h4 class="event-title">Kelas Tahsin Al-Qur'an Anak-Anak</h4>
-          <p class="event-desc">
-            Bimbingan perbaikan makharijul huruf, hukum tajwid dasar, dan kelancaran membaca Al-Qur'an khusus anak-anak & remaja dengan bimbingan ramah dan telaten.
-          </p>
-          <div class="event-meta-list">
-            <div class="event-meta-item"><i class="bi bi-person-fill"></i> <strong>Mentor:</strong> Firdaus</div>
-            <div class="event-meta-item"><i class="bi bi-clock"></i> <strong>Waktu:</strong> 18.30 – Selesai (Break Sholat Isya')</div>
-            <div class="event-meta-item"><i class="bi bi-geo-alt"></i> <strong>Tempat:</strong> Programmer Kecil (RUKO AD)</div>
-          </div>
-        </div>
-        <a href="https://docs.google.com/forms/d/1j20HUijHS8d2AgdwY3eKWxqPxS9uydxhP0H1fiocXec/edit" target="_blank" rel="noopener noreferrer" class="event-btn">
-          <i class="bi bi-pencil-square"></i> Daftar Kelas Tahsin ↗
-        </a>
-      </div>
-
-    </div>
-
-    <!-- BANNER LOKASI RUKO AD & FASILITAS -->
+      
+<!-- BANNER LOKASI PROGRAMMER KECIL & FASILITAS -->
     <div class="facility-card">
       <div class="facility-content">
         <h3>Fasilitas Lengkap di Lokasi Kelas</h3>
@@ -208,17 +648,14 @@
           <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Wi-Fi Cepat</div>
           <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Monitor TV Besar</div>
           <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Ruang Nyaman</div>
-          <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Stopkontak untuk Cas Tiap Meja</div>
-          <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Tempat Sholat / Ibadah</div>
         </div>
       </div>
 
       <div class="facility-cta">
         <span class="location-badge"><i class="bi bi-geo-alt-fill"></i> Lokasi Belajar Offline</span>
         <h4>Programmer Kecil</h4>
-        <p style="font-size: 0.95rem; font-weight: 700; color: #4ade80; margin-bottom: 4px;">RUKO AD</p>
         <p>
-          Jl. Boulevard Jl. Bukit Kencana Jaya No.15-17, Meteseh, Kec. Tembalang, Kota Semarang, Jawa Tengah 50271
+          Jl. Boulevard Bukit Kencana Jaya No.15-17, Meteseh, Kec. Tembalang, Kota Semarang, Jawa Tengah 50271
         </p>
         <div class="cta-buttons">
           <a href="https://maps.app.goo.gl/dYCnqybeEyrhBYMMA" target="_blank" rel="noopener noreferrer" class="btn-maps">
@@ -234,6 +671,5 @@
     <p>&copy; 2026 <a href="https://www.santrenkoding.org">Santren Koding</a> Semarang. Berdaya Bersama Teknologi, Bisnis & Al-Qur'an.</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
